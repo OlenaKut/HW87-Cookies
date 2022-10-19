@@ -7,31 +7,44 @@
     <title>HW-87 Cookies</title>
   </head>
   <body>
-    <h1 id="id"></h1>
+    <h1 id="id" onclick="getCookiesOne()">Show cookie One</h1>
+    <h1 id="id1" onclick="getCookiesTwo()">Show cookie Two</h1>
     <script>
       function addCookies() {
-        let name = "user";
-        let value = prompt("What is you name?");
-        //document.cookie =
-        //"user=Olena; path=/; expires=Sun, 20 Oct 2022 15:00:00 UTC+2;";
+        let fname = "Fname=" + prompt("What is you name?") + ";";
+        let sname = "Sname=" + prompt("What is you surname?") + ";";
 
         document.cookie =
-          name +
-          "=" +
-          value +
-          ";" +
-          "path=/; expires=Sun, 30 Oct 2022 15:00:00 UTC+2;";
-        if (value.length >= 1) {
-          document.getElementById(
-            "id"
-          ).innerHTML = `The cookies of this document is: ${document.cookie}`;
-        } else {
-          return null;
-        }
+          fname + ";" + "path=/; expires=Fri, 28 Oct 2022 15:00:00 UTC+2;";
+        document.cookie =
+          sname + ";" + "path=/; expires=Fri, 28 Oct 2022 15:00:00 UTC+2;";
 
         console.log(`The cookies of this document is: ${document.cookie}`);
       }
       addCookies();
+
+      function getCookiesOne() {
+        if (document.cookie.length != 0) {
+          let array = document.cookie.split(" ");
+          console.log(array);
+          document.getElementById(
+            "id"
+          ).innerHTML = `The first cookies of this document is: ${array[0]}`;
+        } else {
+          return null;
+        }
+      }
+
+      function getCookiesTwo() {
+        if (document.cookie.length != 0) {
+          let array = document.cookie.split(" ");
+          document.getElementById(
+            "id1"
+          ).innerHTML = `The second cookies of this document is: ${array[1]}`;
+        } else {
+          return null;
+        }
+      }
     </script>
   </body>
 </html>
